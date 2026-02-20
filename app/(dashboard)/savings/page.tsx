@@ -3,7 +3,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { format, differenceInMonths, parseISO } from 'date-fns';
-import { Plus, X, Target, Trash2, ChevronRight, Gift } from 'lucide-react';
+import { Plus, X, Target, Trash2, ChevronRight, Gift, Shield, Home, Gem, GraduationCap, Car, Plane, Briefcase, Landmark, Trophy, Star, Lightbulb } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useAppStore } from '@/stores/useAppStore';
 import { formatLKR, cn } from '@/lib/utils';
@@ -13,15 +14,31 @@ import ProgressRing from '@/components/ui/ProgressRing';
 import EmptyState from '@/components/ui/EmptyState';
 import type { SavingsGoal } from '@/types';
 
+const ICON_MAP: Record<string, LucideIcon> = {
+  'Emergency Fund': Shield,
+  'Down Payment': Home,
+  'Wedding Fund': Gem,
+  'Education Fund': GraduationCap,
+  'Vehicle Purchase': Car,
+  'Foreign Trip': Plane,
+  'Start a Business': Briefcase,
+  'Fixed Deposit': Landmark,
+};
+
+function resolveIcon(name: string, size = 20) {
+  const IconComponent = ICON_MAP[name] || Target;
+  return <IconComponent size={size} />;
+}
+
 const GOAL_TEMPLATES = [
-  { name: 'Emergency Fund', icon: '🛡️', color: '#e74c3c', category: 'emergency', description: '3 months of expenses as safety net', factor: 3 },
-  { name: 'Down Payment', icon: '🏠', color: '#3498db', category: 'housing', description: 'Save for your dream home deposit', factor: null },
-  { name: 'Wedding Fund', icon: '💍', color: '#e8b930', category: 'personal', description: 'Your special day savings', factor: null },
-  { name: 'Education Fund', icon: '🎓', color: '#9b59b6', category: 'education', description: "Child's education or your own", factor: null },
-  { name: 'Vehicle Purchase', icon: '🏍️', color: '#16a085', category: 'transport', description: 'Motorbike, car, or three-wheeler', factor: null },
-  { name: 'Foreign Trip', icon: '✈️', color: '#1abc9c', category: 'travel', description: 'Explore beyond Sri Lanka', factor: null },
-  { name: 'Start a Business', icon: '💼', color: '#f39c12', category: 'business', description: 'Fund your entrepreneurial dream', factor: null },
-  { name: 'Fixed Deposit', icon: '🏦', color: '#2ecc71', category: 'investment', description: 'FD at a Sri Lankan bank', factor: null },
+  { name: 'Emergency Fund', icon: 'Emergency Fund', color: '#e74c3c', category: 'emergency', description: '3 months of expenses as safety net', factor: 3 },
+  { name: 'Down Payment', icon: 'Down Payment', color: '#3498db', category: 'housing', description: 'Save for your dream home deposit', factor: null },
+  { name: 'Wedding Fund', icon: 'Wedding Fund', color: '#e8b930', category: 'personal', description: 'Your special day savings', factor: null },
+  { name: 'Education Fund', icon: 'Education Fund', color: '#9b59b6', category: 'education', description: "Child's education or your own", factor: null },
+  { name: 'Vehicle Purchase', icon: 'Vehicle Purchase', color: '#16a085', category: 'transport', description: 'Motorbike, car, or three-wheeler', factor: null },
+  { name: 'Foreign Trip', icon: 'Foreign Trip', color: '#1abc9c', category: 'travel', description: 'Explore beyond Sri Lanka', factor: null },
+  { name: 'Start a Business', icon: 'Start a Business', color: '#f39c12', category: 'business', description: 'Fund your entrepreneurial dream', factor: null },
+  { name: 'Fixed Deposit', icon: 'Fixed Deposit', color: '#2ecc71', category: 'investment', description: 'FD at a Sri Lankan bank', factor: null },
 ];
 
 const COLORS = ['#e8b930', '#16a085', '#3498db', '#9b59b6', '#e74c3c', '#f39c12', '#1abc9c', '#e91e63'];
@@ -35,7 +52,7 @@ function GoalCard({ goal, onContribute, onDelete }: { goal: SavingsGoal; onContr
     <GlassCard className="p-5" hover={false}>
       <div className="flex items-start gap-4">
         <ProgressRing progress={progress} size={72} strokeWidth={6} color={goal.color}>
-          <div className="text-2xl">{goal.icon}</div>
+          <div className="text-2xl">{resolveIcon(goal.name, 20)}</div>
         </ProgressRing>
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between gap-2">
@@ -82,8 +99,8 @@ function GoalCard({ goal, onContribute, onDelete }: { goal: SavingsGoal; onContr
       {goal.milestones.length > 0 && (
         <div className="flex gap-1.5 mt-3">
           {goal.milestones.map((m) => (
-            <span key={m} className="text-xs bg-[#e8b930]/15 text-[#e8b930] px-2 py-0.5 rounded-full">
-              🎉 {m}%
+            <span key={m} className="text-xs bg-[#e8b930]/15 text-[#e8b930] px-2 py-0.5 rounded-full inline-flex items-center gap-1">
+              <Star size={10} /> {m}%
             </span>
           ))}
         </div>
@@ -101,7 +118,7 @@ function AddGoalModal({ onClose }: { onClose: () => void }) {
   const { addGoal } = useAppStore();
   const [form, setForm] = useState({
     name: '', targetAmount: '', deadline: '', priority: 'medium' as const,
-    icon: '🎯', color: '#e8b930', category: 'personal',
+    icon: 'target', color: '#e8b930', category: 'personal',
   });
   const [templateSelected, setTemplateSelected] = useState<string | null>(null);
 
@@ -115,7 +132,7 @@ function AddGoalModal({ onClose }: { onClose: () => void }) {
     const amount = parseFloat(form.targetAmount);
     if (!form.name || !amount || amount <= 0) { toast.error('Fill in all required fields'); return; }
     addGoal({ ...form, targetAmount: amount, currentAmount: 0, priority: form.priority });
-    toast.success('Goal created! 🎯');
+    toast.success('Goal created!');
     onClose();
   };
 
@@ -140,7 +157,7 @@ function AddGoalModal({ onClose }: { onClose: () => void }) {
               className={cn('flex flex-col items-center gap-1 p-2.5 rounded-xl text-xs transition-all border',
                 templateSelected === t.name ? 'border-2 scale-105' : 'border-white/10 hover:border-white/20')}
               style={templateSelected === t.name ? { borderColor: t.color, backgroundColor: `${t.color}20` } : {}}>
-              <span className="text-2xl">{t.icon}</span>
+              <span className="text-2xl">{resolveIcon(t.name, 20)}</span>
               <span className="text-white/50 leading-none text-center">{t.name.split(' ')[0]}</span>
             </button>
           ))}
@@ -182,15 +199,15 @@ function AddGoalModal({ onClose }: { onClose: () => void }) {
               <label className="text-xs text-white/40 mb-1 block">Priority</label>
               <select value={form.priority} onChange={(e) => setForm({ ...form, priority: e.target.value as typeof form.priority })}
                 className="lkr-input w-full rounded-xl px-3 py-2.5 text-sm">
-                <option value="high">🔴 High</option>
-                <option value="medium">🟡 Medium</option>
-                <option value="low">🟢 Low</option>
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
               </select>
             </div>
           </div>
 
           <button type="submit"
-            className="w-full py-3.5 rounded-xl font-bold text-[#1a1a2e] bg-gradient-to-r from-[#e8b930] to-[#c49a18]">
+            className="w-full py-3.5 rounded-xl font-bold text-black bg-gradient-to-r from-[#e8b930] to-[#c49a18]">
             Create Goal
           </button>
         </form>
@@ -214,7 +231,7 @@ function ContributeModal({ goal, onClose }: { goal: SavingsGoal; onClose: () => 
 
     [25, 50, 75, 100].forEach((milestone) => {
       if (prevPct < milestone && newPct >= milestone) {
-        toast.success(`🎉 ${milestone}% milestone reached for "${goal.name}"!`);
+        toast.success(`${milestone}% milestone reached for "${goal.name}"!`);
         try {
           import('canvas-confetti').then((m) => {
             m.default({ particleCount: 100, spread: 70, origin: { y: 0.6 },
@@ -236,7 +253,7 @@ function ContributeModal({ goal, onClose }: { goal: SavingsGoal; onClose: () => 
         className="w-full max-w-sm glass-card p-6"
         onClick={(e) => e.stopPropagation()}>
         <div className="text-center mb-4">
-          <div className="text-4xl mb-2">{goal.icon}</div>
+          <div className="text-4xl mb-2">{resolveIcon(goal.name, 32)}</div>
           <h3 className="font-bold text-white">{goal.name}</h3>
           <p className="text-sm text-white/40">{formatLKR(goal.currentAmount)} of {formatLKR(goal.targetAmount)}</p>
         </div>
@@ -254,7 +271,7 @@ function ContributeModal({ goal, onClose }: { goal: SavingsGoal; onClose: () => 
             ))}
           </div>
           <button type="submit"
-            className="w-full py-3.5 rounded-xl font-bold text-[#1a1a2e] bg-gradient-to-r from-[#16a085] to-[#0e7a65]">
+            className="w-full py-3.5 rounded-xl font-bold text-black bg-gradient-to-r from-[#16a085] to-[#0e7a65]">
             Contribute
           </button>
         </form>
@@ -279,11 +296,11 @@ export default function SavingsPage() {
           <h1 className="text-2xl font-bold text-white">Savings Goals</h1>
           <p className="text-white/40 text-sm">
             {formatLKR(totalSaved, true)} saved of {formatLKR(totalTarget, true)} total
-            {completedGoals.length > 0 && ` · ${completedGoals.length} completed 🎉`}
+            {completedGoals.length > 0 && ` · ${completedGoals.length} completed`}
           </p>
         </div>
         <button onClick={() => setShowAdd(true)}
-          className="flex items-center gap-2 bg-[#e8b930] text-[#1a1a2e] font-bold px-4 py-2.5 rounded-xl">
+          className="flex items-center gap-2 bg-[#e8b930] text-black font-bold px-4 py-2.5 rounded-xl">
           <Plus size={18} /> New Goal
         </button>
       </div>
@@ -301,11 +318,11 @@ export default function SavingsPage() {
           ))}
         </div>
       ) : (
-        <EmptyState icon="🏆" title="No savings goals yet"
+        <EmptyState icon={<Trophy size={48} className="text-white/20" />} title="No savings goals yet"
           description="Create your first goal — emergency fund, wedding, house deposit, or anything you're saving for!"
           action={
             <button onClick={() => setShowAdd(true)}
-              className="flex items-center gap-2 bg-[#e8b930] text-[#1a1a2e] font-bold px-6 py-3 rounded-xl">
+              className="flex items-center gap-2 bg-[#e8b930] text-black font-bold px-6 py-3 rounded-xl">
               <Plus size={18} /> Create First Goal
             </button>
           }
@@ -314,14 +331,14 @@ export default function SavingsPage() {
 
       {/* Tips */}
       <GlassCard className="p-5" delay={0.3} hover={false}>
-        <h3 className="font-semibold text-white mb-3">💡 Savings Tips for Sri Lankans</h3>
+        <h3 className="font-semibold text-white mb-3 inline-flex items-center gap-2"><Lightbulb size={16} /> Savings Tips for Sri Lankans</h3>
         <div className="space-y-2">
           {[
-            '🏦 Park your emergency fund in a savings account at Bank of Ceylon, People\'s Bank, or NSB for 5-7% p.a.',
-            '📊 Use Fixed Deposits (FDs) for goals 6+ months away — current rates: 9-12% p.a.',
-            '🎯 Automate transfers on salary day — out of sight, out of mind!',
-            '💰 The National Savings Bank (NSB) offers reliable savings products specifically for Sri Lankans.',
-            '📈 EPF earns around 9% annually — don\'t withdraw it unless absolutely necessary.',
+            'Park your emergency fund in a savings account at Bank of Ceylon, People\'s Bank, or NSB for 5-7% p.a.',
+            'Use Fixed Deposits (FDs) for goals 6+ months away — current rates: 9-12% p.a.',
+            'Automate transfers on salary day — out of sight, out of mind!',
+            'The National Savings Bank (NSB) offers reliable savings products specifically for Sri Lankans.',
+            'EPF earns around 9% annually — don\'t withdraw it unless absolutely necessary.',
           ].map((tip, i) => (
             <p key={i} className="text-sm text-white/60 py-1 border-b border-white/5 last:border-0">{tip}</p>
           ))}

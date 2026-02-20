@@ -3,19 +3,19 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronRight, MapPin, Users, Briefcase, Wallet, CheckCircle2, ArrowRight } from 'lucide-react';
+import { ChevronRight, MapPin, Users, Briefcase, Wallet, CheckCircle2, ArrowRight, ShoppingCart, Bus, Home, Lightbulb, HeartPulse, GraduationCap, Package, LucideIcon } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useAppStore } from '@/stores/useAppStore';
 import { DISTRICTS, EMPLOYMENT_TYPES, formatLKR } from '@/lib/utils';
 
 const HOUSEHOLD_SPENDING_STATS = [
-  { label: 'Food & Groceries', percent: 38, color: '#16a085', icon: '🛒' },
-  { label: 'Transport', percent: 15, color: '#3498db', icon: '🚌' },
-  { label: 'Housing', percent: 22, color: '#e74c3c', icon: '🏠' },
-  { label: 'Utilities', percent: 8, color: '#9b59b6', icon: '💡' },
-  { label: 'Healthcare', percent: 6, color: '#e74c3c', icon: '🏥' },
-  { label: 'Education', percent: 7, color: '#f39c12', icon: '📚' },
-  { label: 'Other', percent: 4, color: '#95a5a6', icon: '📦' },
+  { label: 'Food & Groceries', percent: 38, color: '#16a085', Icon: ShoppingCart },
+  { label: 'Transport', percent: 15, color: '#3498db', Icon: Bus },
+  { label: 'Housing', percent: 22, color: '#e74c3c', Icon: Home },
+  { label: 'Utilities', percent: 8, color: '#9b59b6', Icon: Lightbulb },
+  { label: 'Healthcare', percent: 6, color: '#e74c3c', Icon: HeartPulse },
+  { label: 'Education', percent: 7, color: '#f39c12', Icon: GraduationCap },
+  { label: 'Other', percent: 4, color: '#95a5a6', Icon: Package },
 ];
 
 const STEPS = [
@@ -63,14 +63,14 @@ export default function LandingPage() {
       setupComplete: true,
       createdAt: new Date().toISOString(),
     });
-    toast.success('Welcome to MiRupee! 🇱🇰');
+    toast.success('Welcome to MiRupee!');
     router.push('/dashboard');
   };
 
   if (profile?.setupComplete) return null;
 
   return (
-    <div className="min-h-screen bg-[#1a1a2e] relative overflow-hidden">
+    <div className="min-h-screen bg-black relative overflow-hidden">
       {/* Background */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#e8b930]/5 rounded-full blur-3xl" />
@@ -95,7 +95,7 @@ export default function LandingPage() {
                 className="mb-8"
               >
                 <div className="w-28 h-28 rounded-3xl bg-gradient-to-br from-[#e8b930] to-[#c49a18] flex items-center justify-center shadow-[0_0_60px_rgba(232,185,48,0.4)] mx-auto">
-                  <span className="text-6xl font-black text-[#1a1a2e]">₨</span>
+                  <span className="text-6xl font-black text-black">₨</span>
                 </div>
               </motion.div>
 
@@ -112,7 +112,7 @@ export default function LandingPage() {
                   Take control of your finances.
                 </p>
                 <p className="text-lg text-[#e8b930] font-semibold mb-6">
-                  Built for Sri Lanka. 🇱🇰
+                  Built for Sri Lanka.
                 </p>
                 <p className="text-white/60 text-base max-w-md mx-auto mb-10 leading-relaxed">
                   Track expenses in LKR, plan budgets, compare prices across districts,
@@ -140,7 +140,7 @@ export default function LandingPage() {
                       transition={{ delay: 0.6 + i * 0.08 }}
                       className="flex items-center gap-3"
                     >
-                      <span className="text-sm w-4">{stat.icon}</span>
+                      <span className="text-sm w-4"><stat.Icon size={16} /></span>
                       <div className="flex-1">
                         <div className="flex justify-between text-xs mb-1">
                           <span className="text-white/60">{stat.label}</span>
@@ -168,7 +168,7 @@ export default function LandingPage() {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={handleStart}
-                className="flex items-center gap-3 bg-gradient-to-r from-[#e8b930] to-[#c49a18] text-[#1a1a2e] font-bold px-8 py-4 rounded-2xl text-lg shadow-[0_0_30px_rgba(232,185,48,0.4)] hover:shadow-[0_0_40px_rgba(232,185,48,0.6)] transition-shadow"
+                className="flex items-center gap-3 bg-gradient-to-r from-[#e8b930] to-[#c49a18] text-black font-bold px-8 py-4 rounded-2xl text-lg shadow-[0_0_30px_rgba(232,185,48,0.4)] hover:shadow-[0_0_40px_rgba(232,185,48,0.6)] transition-shadow"
               >
                 Get Started Free
                 <ArrowRight size={20} />
@@ -249,7 +249,7 @@ export default function LandingPage() {
 
                 <button
                   onClick={handleNext}
-                  className="w-full mt-8 flex items-center justify-center gap-2 bg-gradient-to-r from-[#e8b930] to-[#c49a18] text-[#1a1a2e] font-bold px-6 py-4 rounded-xl"
+                  className="w-full mt-8 flex items-center justify-center gap-2 bg-gradient-to-r from-[#e8b930] to-[#c49a18] text-black font-bold px-6 py-4 rounded-xl"
                 >
                   Continue <ChevronRight size={20} />
                 </button>
@@ -340,7 +340,7 @@ export default function LandingPage() {
 
                 <button
                   onClick={handleFinish}
-                  className="w-full mt-8 flex items-center justify-center gap-2 bg-gradient-to-r from-[#e8b930] to-[#c49a18] text-[#1a1a2e] font-bold px-6 py-4 rounded-xl"
+                  className="w-full mt-8 flex items-center justify-center gap-2 bg-gradient-to-r from-[#e8b930] to-[#c49a18] text-black font-bold px-6 py-4 rounded-xl"
                 >
                   Launch Dashboard <ArrowRight size={20} />
                 </button>

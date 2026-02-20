@@ -12,9 +12,9 @@ interface CategoryIconProps {
 }
 
 const sizeMap = {
-  sm: { container: 'h-8 w-8 text-base', label: 'text-xs' },
-  md: { container: 'h-10 w-10 text-xl', label: 'text-sm' },
-  lg: { container: 'h-12 w-12 text-2xl', label: 'text-sm' },
+  sm: { container: 'h-8 w-8', iconSize: 14, label: 'text-xs' },
+  md: { container: 'h-10 w-10', iconSize: 18, label: 'text-sm' },
+  lg: { container: 'h-12 w-12', iconSize: 22, label: 'text-sm' },
 };
 
 export default function CategoryIcon({
@@ -25,6 +25,7 @@ export default function CategoryIcon({
 }: CategoryIconProps) {
   const cat = CATEGORIES[category] || CATEGORIES.miscellaneous;
   const sizes = sizeMap[size];
+  const IconComponent = cat.Icon;
 
   return (
     <div className={cn('flex flex-col items-center gap-1', className)}>
@@ -33,11 +34,9 @@ export default function CategoryIcon({
           'flex items-center justify-center rounded-xl flex-shrink-0',
           sizes.container
         )}
-        style={{ backgroundColor: cat.bgColor, color: cat.color }}
+        style={{ backgroundColor: cat.bgColor }}
       >
-        <span role="img" aria-label={cat.label}>
-          {cat.icon}
-        </span>
+        <IconComponent size={sizes.iconSize} style={{ color: cat.color }} />
       </div>
       {showLabel && (
         <span className={cn('text-white/60 text-center leading-tight', sizes.label)}>

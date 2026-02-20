@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { format } from 'date-fns';
-import { Target, ChevronDown, ChevronUp, X, Check, AlertTriangle } from 'lucide-react';
+import { Target, ChevronDown, ChevronUp, X, Check, AlertTriangle, ClipboardList } from 'lucide-react';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RTooltip, ResponsiveContainer, Cell, Legend,
 } from 'recharts';
@@ -124,7 +124,7 @@ export default function BudgetPage() {
             <div className="flex flex-wrap gap-2">
               {overBudgetCats.map((cat) => (
                 <span key={cat} className="text-xs bg-[#e74c3c]/15 text-[#e74c3c] px-2.5 py-1 rounded-full">
-                  {CATEGORIES[cat].icon} {CATEGORIES[cat].label}: {formatLKR(getSpent(cat) - getBudgetLimit(cat), true)} over
+                  <CATEGORIES[cat].Icon size={16} style={{ color: CATEGORIES[cat].color }} /> {CATEGORIES[cat].label}: {formatLKR(getSpent(cat) - getBudgetLimit(cat), true)} over
                 </span>
               ))}
             </div>
@@ -143,7 +143,7 @@ export default function BudgetPage() {
               <YAxis tick={{ fill: 'rgba(255,255,255,0.4)', fontSize: 10 }} axisLine={false} tickLine={false}
                 tickFormatter={(v) => `${(v / 1000).toFixed(0)}K`} />
               <RTooltip formatter={(value: number) => [formatLKR(value), '']} contentStyle={{
-                background: 'rgba(15,52,96,0.95)', border: '1px solid rgba(232,185,48,0.2)',
+                background: 'rgba(0,0,0,0.9)', border: '1px solid rgba(255,255,255,0.1)',
                 borderRadius: '12px', color: '#f8f5f0', fontSize: '12px'
               }} />
               <Legend wrapperStyle={{ fontSize: '11px', color: 'rgba(255,255,255,0.5)' }} />
@@ -172,7 +172,7 @@ export default function BudgetPage() {
             <GlassCard key={cat} className="p-4" delay={0.1 + i * 0.03}>
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-9 h-9 rounded-xl flex items-center justify-center text-lg flex-shrink-0"
-                  style={{ backgroundColor: c.bgColor }}>{c.icon}</div>
+                  style={{ backgroundColor: c.bgColor }}><c.Icon size={16} /></div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between">
                     <span className="text-sm font-medium text-white/80">{c.label}</span>
@@ -273,7 +273,7 @@ export default function BudgetPage() {
                   </motion.div>
                 )) : (
                   <div className="text-center py-8 text-white/40">
-                    <p className="text-4xl mb-3">📋</p>
+                    <p className="mb-3 flex justify-center"><ClipboardList size={36} /></p>
                     <p>Loading templates...</p>
                   </div>
                 )}

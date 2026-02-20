@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calculator, Plus, Trash2, TrendingDown, AlertCircle, Scale } from 'lucide-react';
+import { Calculator, Plus, Trash2, TrendingDown, AlertCircle, Scale, CheckCircle2, AlertTriangle, XCircle, Lightbulb, Snowflake, Mountain } from 'lucide-react';
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip as RTooltip, ResponsiveContainer,
   BarChart, Bar, Cell, Legend,
@@ -67,6 +67,12 @@ export default function LoansPage() {
     setDebts((d) => d.map((x) => x.id === id ? { ...x, [field]: typeof value === 'string' ? value : Number(value) } : x));
   };
 
+  const tabs = [
+    { key: 'emi' as const, icon: <Calculator size={14} />, label: 'EMI Calc' },
+    { key: 'debt' as const, icon: <TrendingDown size={14} />, label: 'Debt Payoff' },
+    { key: 'compare' as const, icon: <Scale size={14} />, label: 'Compare' },
+  ];
+
   return (
     <div className="p-4 md:p-6 space-y-6 page-enter">
       <div>
@@ -76,10 +82,10 @@ export default function LoansPage() {
 
       {/* Tabs */}
       <div className="flex gap-1 bg-white/5 rounded-xl p-1">
-        {([['emi', '📊 EMI Calc'], ['debt', '💸 Debt Payoff'], ['compare', '⚖️ Compare']] as const).map(([t, label]) => (
-          <button key={t} onClick={() => setTab(t)}
-            className={cn('flex-1 py-2 rounded-lg text-sm font-medium transition-all', tab === t ? 'bg-[#e8b930]/20 text-[#e8b930]' : 'text-white/40 hover:text-white/60')}>
-            {label}
+        {tabs.map(({ key, icon, label }) => (
+          <button key={key} onClick={() => setTab(key)}
+            className={cn('flex-1 py-2 rounded-lg text-sm font-medium transition-all flex items-center justify-center gap-1.5', tab === key ? 'bg-[#e8b930]/20 text-[#e8b930]' : 'text-white/40 hover:text-white/60')}>
+            {icon} {label}
           </button>
         ))}
       </div>
@@ -143,7 +149,7 @@ export default function LoansPage() {
                 <div className="space-y-4">
                   <div className="p-4 bg-[#e8b930]/10 rounded-xl text-center border border-[#e8b930]/20">
                     <p className="text-xs text-white/50 mb-1">Monthly EMI</p>
-                    <p className="text-3xl font-black text-[#e8b930]">₨ {Math.round(emiResult.emi).toLocaleString()}</p>
+                    <p className="text-3xl font-black text-[#e8b930]">Rs {Math.round(emiResult.emi).toLocaleString()}</p>
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     <div className="p-3 bg-white/5 rounded-xl text-center">
@@ -161,7 +167,7 @@ export default function LoansPage() {
                       {dtiRatio > 40 && <AlertCircle size={14} className="text-[#e74c3c]" />}
                       <p className="text-xs text-white/60">Debt-to-Income Ratio: <strong className={dtiRatio <= 30 ? 'text-[#16a085]' : dtiRatio <= 40 ? 'text-[#f39c12]' : 'text-[#e74c3c]'}>{dtiRatio.toFixed(1)}%</strong></p>
                     </div>
-                    <p className="text-xs text-white/30 mt-0.5">{dtiRatio <= 30 ? '✅ Healthy DTI ratio' : dtiRatio <= 40 ? '⚠️ Moderate — keep eye on expenses' : '❌ High DTI — risky financial position'}</p>
+                    <p className="text-xs text-white/30 mt-0.5 flex items-center gap-1">{dtiRatio <= 30 ? <><CheckCircle2 size={12} className="text-[#16a085]" /> Healthy DTI ratio</> : dtiRatio <= 40 ? <><AlertTriangle size={12} className="text-[#f39c12]" /> Moderate — keep eye on expenses</> : <><XCircle size={12} className="text-[#e74c3c]" /> High DTI — risky financial position</>}</p>
                   </div>
                 </div>
               </GlassCard>
@@ -183,7 +189,7 @@ export default function LoansPage() {
                   <YAxis tick={{ fill: 'rgba(255,255,255,0.4)', fontSize: 10 }} axisLine={false} tickLine={false}
                     tickFormatter={(v) => `${(v / 1000).toFixed(0)}K`} />
                   <RTooltip formatter={(v: number) => [formatLKR(v), '']} contentStyle={{
-                    background: 'rgba(15,52,96,0.95)', border: '1px solid rgba(232,185,48,0.2)',
+                    background: 'rgba(0,0,0,0.9)', border: '1px solid rgba(255,255,255,0.1)',
                     borderRadius: '12px', color: '#f8f5f0', fontSize: '12px'
                   }} />
                   <Area type="monotone" dataKey="balance" name="Outstanding Balance" stroke="#e8b930" fill="url(#balGrad)" strokeWidth={2} />
@@ -207,7 +213,7 @@ export default function LoansPage() {
                         className="lkr-input w-full rounded-lg px-2 py-1.5 text-sm" />
                     </div>
                     <div>
-                      <label className="text-xs text-white/40 mb-1 block">Balance (₨)</label>
+                      <label className="text-xs text-white/40 mb-1 block">Balance (Rs)</label>
                       <input type="number" value={debt.balance} onChange={(e) => updateDebt(debt.id, 'balance', e.target.value)}
                         className="lkr-input w-full rounded-lg px-2 py-1.5 text-sm" />
                     </div>
@@ -240,7 +246,7 @@ export default function LoansPage() {
             <GlassCard className="p-4" delay={0.2}>
               <div className="flex items-center justify-between mb-2">
                 <label className="text-sm font-medium text-white/70">Extra Monthly Payment</label>
-                <span className="text-[#e8b930] font-bold">₨ {extraPayment.toLocaleString()}</span>
+                <span className="text-[#e8b930] font-bold">Rs {extraPayment.toLocaleString()}</span>
               </div>
               <input type="range" min={0} max={50000} step={500} value={extraPayment}
                 onChange={(e) => setExtraPayment(Number(e.target.value))} className="w-full" />
@@ -248,18 +254,18 @@ export default function LoansPage() {
 
             {/* Strategy comparison */}
             <div className="grid md:grid-cols-2 gap-4">
-              {[{ method: 'snowball', result: snowball, label: '❄️ Snowball', desc: 'Pay smallest debts first', color: '#3498db' },
-                { method: 'avalanche', result: avalanche, label: '🏔️ Avalanche', desc: 'Pay highest interest first', color: '#9b59b6' }
+              {[{ method: 'snowball', result: snowball, icon: <Snowflake size={14} />, label: 'Snowball', desc: 'Pay smallest debts first', color: '#3498db' },
+                { method: 'avalanche', result: avalanche, icon: <Mountain size={14} />, label: 'Avalanche', desc: 'Pay highest interest first', color: '#9b59b6' }
               ].map((s) => (
                 <GlassCard key={s.method} className="p-4 cursor-pointer" delay={0.25}
                   onClick={() => setPayoffMethod(s.method as 'snowball' | 'avalanche')}
                   gold={payoffMethod === s.method}>
                   <div className="flex items-start justify-between mb-3">
                     <div>
-                      <p className="font-semibold text-white">{s.label}</p>
+                      <p className="font-semibold text-white flex items-center gap-1.5">{s.icon} {s.label}</p>
                       <p className="text-xs text-white/40">{s.desc}</p>
                     </div>
-                    {payoffMethod === s.method && <span className="text-[#e8b930] text-xs">✓ Selected</span>}
+                    {payoffMethod === s.method && <span className="text-[#e8b930] text-xs flex items-center gap-1"><CheckCircle2 size={12} /> Selected</span>}
                   </div>
                   <div className="grid grid-cols-2 gap-2 text-center">
                     <div className="p-2 bg-white/5 rounded-lg">
@@ -277,10 +283,10 @@ export default function LoansPage() {
             </div>
 
             <GlassCard className="p-4" delay={0.3} hover={false}>
-              <p className="text-sm text-white/60">
-                💡 <strong className="text-white">Avalanche method</strong> saves more money on interest.
+              <p className="text-sm text-white/60 flex items-start gap-1.5">
+                <Lightbulb size={14} className="flex-shrink-0 mt-0.5" /> <span><strong className="text-white">Avalanche method</strong> saves more money on interest.
                 <strong className="text-white"> Snowball method</strong> gives faster psychological wins by clearing small debts first.
-                Most Sri Lankan financial advisors recommend the avalanche method for high-interest debts.
+                Most Sri Lankan financial advisors recommend the avalanche method for high-interest debts.</span>
               </p>
             </GlassCard>
           </motion.div>
@@ -297,7 +303,7 @@ export default function LoansPage() {
                   <h3 className="font-semibold mb-4" style={{ color: l.color }}>{l.label}</h3>
                   <div className="space-y-3">
                     {[
-                      { label: 'Principal (₨)', key: 'principal', min: 10000, max: 10000000, step: 10000 },
+                      { label: 'Principal (Rs)', key: 'principal', min: 10000, max: 10000000, step: 10000 },
                       { label: 'Rate (% p.a.)', key: 'rate', min: 1, max: 40, step: 0.5 },
                       { label: 'Tenure (months)', key: 'tenure', min: 6, max: 360, step: 6 },
                     ].map((field) => (
@@ -317,7 +323,7 @@ export default function LoansPage() {
                     <div className="pt-2 border-t border-white/10 grid grid-cols-3 gap-2 text-center">
                       <div>
                         <p className="text-xs text-white/40">EMI</p>
-                        <p className="text-sm font-bold" style={{ color: l.color }}>₨ {Math.round(l.result.emi).toLocaleString()}</p>
+                        <p className="text-sm font-bold" style={{ color: l.color }}>Rs {Math.round(l.result.emi).toLocaleString()}</p>
                       </div>
                       <div>
                         <p className="text-xs text-white/40">Interest</p>
@@ -347,7 +353,7 @@ export default function LoansPage() {
                   <YAxis tick={{ fill: 'rgba(255,255,255,0.4)', fontSize: 10 }} axisLine={false} tickLine={false}
                     tickFormatter={(v) => `${(v / 1000).toFixed(0)}K`} />
                   <RTooltip formatter={(v: number) => [formatLKR(v), '']} contentStyle={{
-                    background: 'rgba(15,52,96,0.95)', border: '1px solid rgba(232,185,48,0.2)',
+                    background: 'rgba(0,0,0,0.9)', border: '1px solid rgba(255,255,255,0.1)',
                     borderRadius: '12px', color: '#f8f5f0', fontSize: '12px'
                   }} />
                   <Legend wrapperStyle={{ fontSize: '12px', color: 'rgba(255,255,255,0.5)' }} />
@@ -355,10 +361,10 @@ export default function LoansPage() {
                   <Bar dataKey="B" name="Option B" fill="#16a085" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
-              <p className="text-xs text-white/40 mt-3 text-center">
+              <p className="text-xs text-white/40 mt-3 text-center flex items-center justify-center gap-1">
                 {loan1Result.totalInterest < loan2Result.totalInterest
-                  ? `✅ Option A saves you ${formatLKR(loan2Result.totalInterest - loan1Result.totalInterest, true)} in interest`
-                  : `✅ Option B saves you ${formatLKR(loan1Result.totalInterest - loan2Result.totalInterest, true)} in interest`}
+                  ? <><CheckCircle2 size={12} className="text-[#16a085]" /> Option A saves you {formatLKR(loan2Result.totalInterest - loan1Result.totalInterest, true)} in interest</>
+                  : <><CheckCircle2 size={12} className="text-[#16a085]" /> Option B saves you {formatLKR(loan1Result.totalInterest - loan2Result.totalInterest, true)} in interest</>}
               </p>
             </GlassCard>
           </motion.div>

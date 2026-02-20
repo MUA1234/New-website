@@ -5,8 +5,8 @@
 @tailwind utilities;
 
 :root {
-  --sapphire: #1a1a2e;
-  --royal: #0f3460;
+  --sapphire: #000000;
+  --royal: #0a0a14;
   --gold: #e8b930;
   --emerald: #16a085;
   --coral: #e74c3c;
@@ -55,12 +55,12 @@ body.light {
 
 /* Glass card base */
 .glass-card {
-  background: rgba(15, 52, 96, 0.4);
+  background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(232, 185, 48, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 .light .glass-card {
@@ -89,9 +89,8 @@ body.light {
 /* Animated gradient mesh background */
 .gradient-mesh {
   background:
-    radial-gradient(ellipse at 20% 20%, rgba(232, 185, 48, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 80%, rgba(22, 160, 133, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 50%, rgba(15, 52, 96, 0.5) 0%, transparent 70%);
+    radial-gradient(ellipse at 20% 20%, rgba(232, 185, 48, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(22, 160, 133, 0.04) 0%, transparent 50%);
 }
 
 /* Number animations */
@@ -202,7 +201,7 @@ input[type="range"]::-moz-range-thumb {
 
 /* Toast customization */
 .toast-custom {
-  background: rgba(15, 52, 96, 0.95) !important;
+  background: rgba(10, 10, 20, 0.95) !important;
   color: var(--cream) !important;
   border: 1px solid rgba(232, 185, 48, 0.3) !important;
   backdrop-filter: blur(12px) !important;

@@ -1,6 +1,11 @@
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { format, parseISO, startOfMonth, endOfMonth, isWithinInterval } from 'date-fns';
+import {
+  ShoppingCart, Bus, Lightbulb, Home, GraduationCap, HeartPulse,
+  Shirt, Heart, Landmark, Film, PiggyBank, Package, Banknote,
+  type LucideIcon,
+} from 'lucide-react';
 import type { Transaction, ExpenseCategory, TaxCalculation, TaxSlab, LoanCalculation } from '@/types';
 
 export function cn(...inputs: ClassValue[]) {
@@ -26,97 +31,97 @@ export function parseLKR(str: string): number {
 // Category configs
 export const CATEGORIES: Record<
   ExpenseCategory,
-  { label: string; label_si: string; color: string; icon: string; bgColor: string }
+  { label: string; label_si: string; color: string; Icon: LucideIcon; bgColor: string }
 > = {
   groceries: {
     label: 'Rice & Groceries',
     label_si: 'ආහාර',
     color: '#16a085',
-    icon: '🛒',
+    Icon: ShoppingCart,
     bgColor: 'rgba(22,160,133,0.15)',
   },
   transport: {
     label: 'Transport',
     label_si: 'ප්‍රවාහනය',
     color: '#3498db',
-    icon: '🚌',
+    Icon: Bus,
     bgColor: 'rgba(52,152,219,0.15)',
   },
   utilities: {
     label: 'Utilities',
     label_si: 'සේවා',
     color: '#9b59b6',
-    icon: '💡',
+    Icon: Lightbulb,
     bgColor: 'rgba(155,89,182,0.15)',
   },
   rent: {
     label: 'Rent',
     label_si: 'කුලී',
     color: '#e74c3c',
-    icon: '🏠',
+    Icon: Home,
     bgColor: 'rgba(231,76,60,0.15)',
   },
   education: {
     label: 'Education',
     label_si: 'අධ්‍යාපනය',
     color: '#f39c12',
-    icon: '📚',
+    Icon: GraduationCap,
     bgColor: 'rgba(243,156,18,0.15)',
   },
   healthcare: {
     label: 'Healthcare',
     label_si: 'සෞඛ්‍ය',
     color: '#e74c3c',
-    icon: '🏥',
+    Icon: HeartPulse,
     bgColor: 'rgba(231,76,60,0.15)',
   },
   clothing: {
     label: 'Clothing',
     label_si: 'ඇඳුම්',
     color: '#1abc9c',
-    icon: '👗',
+    Icon: Shirt,
     bgColor: 'rgba(26,188,156,0.15)',
   },
   religious: {
     label: 'Religious/Donations',
     label_si: 'ආගමික',
     color: '#e8b930',
-    icon: '🙏',
+    Icon: Heart,
     bgColor: 'rgba(232,185,48,0.15)',
   },
   loans: {
     label: 'Loan Repayments',
     label_si: 'ණය',
     color: '#e74c3c',
-    icon: '🏦',
+    Icon: Landmark,
     bgColor: 'rgba(231,76,60,0.15)',
   },
   entertainment: {
     label: 'Entertainment',
     label_si: 'විනෝදය',
     color: '#8e44ad',
-    icon: '🎬',
+    Icon: Film,
     bgColor: 'rgba(142,68,173,0.15)',
   },
   savings: {
     label: 'Savings',
     label_si: 'ඉතිරිකිරීම',
     color: '#16a085',
-    icon: '💰',
+    Icon: PiggyBank,
     bgColor: 'rgba(22,160,133,0.15)',
   },
   miscellaneous: {
     label: 'Miscellaneous',
     label_si: 'අනෙකුත්',
     color: '#95a5a6',
-    icon: '📦',
+    Icon: Package,
     bgColor: 'rgba(149,165,166,0.15)',
   },
   income: {
     label: 'Income',
     label_si: 'ආදායම',
     color: '#e8b930',
-    icon: '💵',
+    Icon: Banknote,
     bgColor: 'rgba(232,185,48,0.15)',
   },
 };

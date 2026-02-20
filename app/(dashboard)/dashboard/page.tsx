@@ -5,7 +5,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { format, subMonths } from 'date-fns';
 import {
   Plus, Wallet, TrendingUp, TrendingDown, PiggyBank, Zap,
-  X, ChevronRight, RefreshCw, DollarSign
+  X, ChevronRight, RefreshCw, DollarSign, AlertTriangle,
+  Lightbulb, BarChart3, Landmark, ShoppingCart, Smartphone,
+  Target, CreditCard, Home, BookOpen, CheckCircle2, Receipt,
+  Banknote, Building2
 } from 'lucide-react';
 import {
   PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RTooltip,
@@ -27,17 +30,22 @@ import EmptyState from '@/components/ui/EmptyState';
 import type { ExpenseCategory, Transaction } from '@/types';
 
 const TIPS = [
-  "💡 Set aside at least 10% of your income as savings before spending.",
-  "📊 Review your expenses every Sunday to stay on track with your budget.",
-  "🏦 Keep 3-6 months of expenses in an emergency fund (FD or savings account).",
-  "⚡ Switch to CEB's off-peak hours to reduce your electricity bill.",
-  "🛒 Buy rice and essentials in bulk when prices are low to save money.",
-  "📱 Use FriMi or Genie digital wallets for cashback on everyday purchases.",
-  "🎯 The 50/30/20 rule: 50% needs, 30% wants, 20% savings.",
-  "💳 Avoid credit card debt — interest rates can be 24-36% per year in Sri Lanka.",
-  "🏠 If renting, your rent should ideally not exceed 30% of your monthly income.",
-  "📚 Educate yourself about EPF — it's your free retirement fund!",
+  "Set aside at least 10% of your income as savings before spending.",
+  "Review your expenses every Sunday to stay on track with your budget.",
+  "Keep 3-6 months of expenses in an emergency fund (FD or savings account).",
+  "Switch to CEB's off-peak hours to reduce your electricity bill.",
+  "Buy rice and essentials in bulk when prices are low to save money.",
+  "Use FriMi or Genie digital wallets for cashback on everyday purchases.",
+  "The 50/30/20 rule: 50% needs, 30% wants, 20% savings.",
+  "Avoid credit card debt — interest rates can be 24-36% per year in Sri Lanka.",
+  "If renting, your rent should ideally not exceed 30% of your monthly income.",
+  "Educate yourself about EPF — it's your free retirement fund!",
 ];
+
+const TOOLTIP_STYLE = {
+  background: 'rgba(0,0,0,0.9)', border: '1px solid rgba(255,255,255,0.1)',
+  borderRadius: '12px', color: '#f8f5f0', fontSize: '12px'
+};
 
 function AddExpenseModal({ onClose }: { onClose: () => void }) {
   const { addTransaction, profile } = useAppStore();
@@ -121,6 +129,7 @@ function AddExpenseModal({ onClose }: { onClose: () => void }) {
             <div className="grid grid-cols-4 gap-2">
               {EXPENSE_CATEGORIES.slice(0, 8).map((cat) => {
                 const c = CATEGORIES[cat];
+                const CatIcon = c.Icon;
                 return (
                   <button
                     key={cat}
@@ -130,7 +139,7 @@ function AddExpenseModal({ onClose }: { onClose: () => void }) {
                       ? 'border-2 scale-105' : 'border border-white/10 hover:border-white/20')}
                     style={form.category === cat ? { borderColor: c.color, backgroundColor: c.bgColor } : {}}
                   >
-                    <span>{c.icon}</span>
+                    <CatIcon size={16} style={{ color: c.color }} />
                     <span className="text-[10px] text-white/60 leading-none">{c.label.split(' ')[0]}</span>
                   </button>
                 );
@@ -160,10 +169,10 @@ function AddExpenseModal({ onClose }: { onClose: () => void }) {
               onChange={(e) => setForm({ ...form, paymentMethod: e.target.value as typeof form.paymentMethod })}
               className="lkr-input w-full rounded-xl px-3 py-2.5 text-sm"
             >
-              <option value="cash">💵 Cash</option>
-              <option value="card">💳 Card</option>
-              <option value="bank-transfer">🏦 Bank Transfer</option>
-              <option value="digital-wallet">📱 Digital Wallet</option>
+              <option value="cash">Cash</option>
+              <option value="card">Card</option>
+              <option value="bank-transfer">Bank Transfer</option>
+              <option value="digital-wallet">Digital Wallet</option>
             </select>
           </div>
 
@@ -192,7 +201,7 @@ function AddExpenseModal({ onClose }: { onClose: () => void }) {
 
           <button
             type="submit"
-            className="w-full py-3.5 rounded-xl font-bold text-[#1a1a2e] bg-gradient-to-r from-[#e8b930] to-[#c49a18] hover:shadow-[0_0_20px_rgba(232,185,48,0.4)] transition-shadow"
+            className="w-full py-3.5 rounded-xl font-bold text-black bg-gradient-to-r from-[#e8b930] to-[#c49a18] hover:shadow-[0_0_20px_rgba(232,185,48,0.4)] transition-shadow"
           >
             Add {form.type === 'expense' ? 'Expense' : 'Income'}
           </button>
@@ -237,7 +246,6 @@ export default function DashboardPage() {
     name: CATEGORIES[cat].label,
     value: getCategoryTotal(currentMonthTx, cat),
     color: CATEGORIES[cat].color,
-    icon: CATEGORIES[cat].icon,
   })).filter((d) => d.value > 0);
 
   // Monthly trend data
@@ -254,19 +262,19 @@ export default function DashboardPage() {
   // Insights
   const insights: string[] = [];
   if (expenseChange.direction === 'up' && expenseChange.pct > 10) {
-    insights.push(`⚠️ Your expenses are ${expenseChange.pct.toFixed(0)}% higher than last month.`);
+    insights.push(`Your expenses are ${expenseChange.pct.toFixed(0)}% higher than last month.`);
   }
   if (savingsRate < 10 && totalIncome > 0) {
-    insights.push(`💡 Try to save at least 10% of income. You&apos;re currently at ${savingsRate.toFixed(1)}%.`);
+    insights.push(`Try to save at least 10% of income. You're currently at ${savingsRate.toFixed(1)}%.`);
   }
   const topCategory = donutData.sort((a, b) => b.value - a.value)[0];
   if (topCategory) {
-    insights.push(`🛒 Highest spend: ${topCategory.name} (${formatLKR(topCategory.value, true)})`);
+    insights.push(`Highest spend: ${topCategory.name} (${formatLKR(topCategory.value, true)})`);
   }
   if (savings > 5000) {
-    insights.push(`✅ You&apos;ve saved ${formatLKR(savings, true)} this month. Keep it up!`);
+    insights.push(`You've saved ${formatLKR(savings, true)} this month. Keep it up!`);
   }
-  if (insights.length === 0) insights.push('📊 Add your first transaction to see insights here.');
+  if (insights.length === 0) insights.push('Add your first transaction to see insights here.');
 
   const container = {
     hidden: { opacity: 0 },
@@ -281,7 +289,7 @@ export default function DashboardPage() {
         <div>
           <h1 className="text-2xl font-bold text-white">
             Good {new Date().getHours() < 12 ? 'Morning' : new Date().getHours() < 17 ? 'Afternoon' : 'Evening'},{' '}
-            <span className="text-[#e8b930]">{profile?.name || 'Friend'}</span> 👋
+            <span className="text-[#e8b930]">{profile?.name || 'Friend'}</span>
           </h1>
           <p className="text-white/40 text-sm mt-0.5">
             {format(new Date(), 'EEEE, dd MMMM yyyy')} · {profile?.district || 'Sri Lanka'}
@@ -289,7 +297,7 @@ export default function DashboardPage() {
         </div>
         <button
           onClick={() => setShowAddModal(true)}
-          className="hidden sm:flex items-center gap-2 bg-[#e8b930] text-[#1a1a2e] font-bold px-4 py-2.5 rounded-xl hover:bg-[#f0cc5a] transition-colors"
+          className="hidden sm:flex items-center gap-2 bg-[#e8b930] text-black font-bold px-4 py-2.5 rounded-xl hover:bg-[#f0cc5a] transition-colors"
         >
           <Plus size={18} /> Add
         </button>
@@ -298,7 +306,7 @@ export default function DashboardPage() {
       {/* Tip of the day */}
       <GlassCard className="p-4 border-l-4 border-[#e8b930]" delay={0.05} hover={false}>
         <div className="flex items-start gap-3">
-          <Zap size={18} className="text-[#e8b930] flex-shrink-0 mt-0.5" />
+          <Lightbulb size={18} className="text-[#e8b930] flex-shrink-0 mt-0.5" />
           <p className="text-sm text-white/70">{TIPS[tipIndex]}</p>
         </div>
       </GlassCard>
@@ -346,10 +354,7 @@ export default function DashboardPage() {
                       <Cell key={index} fill={entry.color} stroke="none" />
                     ))}
                   </Pie>
-                  <RTooltip formatter={(value: number) => [formatLKR(value), '']} contentStyle={{
-                    background: 'rgba(15,52,96,0.95)', border: '1px solid rgba(232,185,48,0.2)',
-                    borderRadius: '12px', color: '#f8f5f0', fontSize: '12px'
-                  }} />
+                  <RTooltip formatter={(value: number) => [formatLKR(value), '']} contentStyle={TOOLTIP_STYLE} />
                 </PieChart>
               </ResponsiveContainer>
               <div className="space-y-2 mt-2">
@@ -365,7 +370,7 @@ export default function DashboardPage() {
               </div>
             </>
           ) : (
-            <EmptyState icon="📊" title="No expenses yet" description="Add your first expense to see the breakdown" />
+            <EmptyState icon={<BarChart3 size={48} className="text-white/20" />} title="No expenses yet" description="Add your first expense to see the breakdown" />
           )}
         </GlassCard>
 
@@ -391,10 +396,7 @@ export default function DashboardPage() {
               <XAxis dataKey="month" tick={{ fill: 'rgba(255,255,255,0.4)', fontSize: 11 }} axisLine={false} tickLine={false} />
               <YAxis tick={{ fill: 'rgba(255,255,255,0.4)', fontSize: 10 }} axisLine={false} tickLine={false}
                 tickFormatter={(v) => `${(v/1000).toFixed(0)}K`} />
-              <RTooltip formatter={(value: number) => [formatLKR(value), '']} contentStyle={{
-                background: 'rgba(15,52,96,0.95)', border: '1px solid rgba(232,185,48,0.2)',
-                borderRadius: '12px', color: '#f8f5f0', fontSize: '12px'
-              }} />
+              <RTooltip formatter={(value: number) => [formatLKR(value), '']} contentStyle={TOOLTIP_STYLE} />
               <Legend wrapperStyle={{ fontSize: '12px', color: 'rgba(255,255,255,0.6)' }} />
               <Area type="monotone" dataKey="income" name="Income" stroke="#e8b930" fill="url(#incomeGrad)" strokeWidth={2} />
               <Area type="monotone" dataKey="expenses" name="Expenses" stroke="#e74c3c" fill="url(#expenseGrad)" strokeWidth={2} />
@@ -423,8 +425,8 @@ export default function DashboardPage() {
                 : 'Set up a budget to track health'}
             </p>
             {budgetUsedPct >= 80 && totalBudget > 0 && (
-              <div className="mt-3 text-xs text-[#e74c3c] bg-[#e74c3c]/10 px-3 py-1.5 rounded-full">
-                ⚠️ Approaching budget limit!
+              <div className="mt-3 text-xs text-[#e74c3c] bg-[#e74c3c]/10 px-3 py-1.5 rounded-full flex items-center gap-1">
+                <AlertTriangle size={12} /> Approaching budget limit!
               </div>
             )}
           </div>
@@ -461,7 +463,7 @@ export default function DashboardPage() {
               ))}
             </div>
           ) : (
-            <EmptyState icon="🧾" title="No transactions yet" description="Tap + to add your first expense" />
+            <EmptyState icon={<Receipt size={48} className="text-white/20" />} title="No transactions yet" description="Tap + to add your first expense" />
           )}
         </GlassCard>
       </div>
@@ -512,7 +514,7 @@ export default function DashboardPage() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setShowAddModal(true)}
-        className="sm:hidden fixed bottom-20 right-4 z-30 w-14 h-14 rounded-full bg-gradient-to-br from-[#e8b930] to-[#c49a18] flex items-center justify-center shadow-[0_4px_20px_rgba(232,185,48,0.5)] text-[#1a1a2e]"
+        className="sm:hidden fixed bottom-20 right-4 z-30 w-14 h-14 rounded-full bg-gradient-to-br from-[#e8b930] to-[#c49a18] flex items-center justify-center shadow-[0_4px_20px_rgba(232,185,48,0.5)] text-black"
       >
         <Plus size={26} strokeWidth={2.5} />
       </motion.button>

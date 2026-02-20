@@ -18,7 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className="dark" suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-        <meta name="theme-color" content="#1a1a2e" />
+        <meta name="theme-color" content="#000000" />
       </head>
       <body suppressHydrationWarning>
         <ThemeProvider>
@@ -28,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             toastOptions={{
               duration: 3000,
               style: {
-                background: 'rgba(15, 52, 96, 0.95)',
+                background: 'rgba(10, 10, 20, 0.95)',
                 color: '#f8f5f0',
                 border: '1px solid rgba(232, 185, 48, 0.3)',
                 backdropFilter: 'blur(12px)',

@@ -2,7 +2,11 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, TrendingUp, TrendingDown, ShoppingCart, X, Plus, Minus } from 'lucide-react';
+import {
+  Search, TrendingUp, TrendingDown, ShoppingCart, X, Plus, Minus,
+  LayoutGrid, Wheat, Leaf, Drumstick, Milk, Fuel, Lightbulb, Pill, SprayCan,
+  AlertTriangle, type LucideIcon,
+} from 'lucide-react';
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RTooltip, ResponsiveContainer,
   BarChart, Bar, Cell,
@@ -14,16 +18,16 @@ import LKRAmount from '@/components/ui/LKRAmount';
 import EmptyState from '@/components/ui/EmptyState';
 import type { PriceItem } from '@/types';
 
-const CATEGORIES = [
-  { id: 'all', label: 'All Items', icon: '🏪' },
-  { id: 'staples', label: 'Staples', icon: '🌾' },
-  { id: 'vegetables', label: 'Vegetables', icon: '🥬' },
-  { id: 'protein', label: 'Protein', icon: '🍗' },
-  { id: 'dairy', label: 'Dairy', icon: '🥛' },
-  { id: 'fuel', label: 'Fuel & Gas', icon: '⛽' },
-  { id: 'utilities', label: 'Utilities', icon: '💡' },
-  { id: 'pharmacy', label: 'Pharmacy', icon: '💊' },
-  { id: 'household', label: 'Household', icon: '🧴' },
+const CATEGORIES: { id: string; label: string; Icon: LucideIcon }[] = [
+  { id: 'all', label: 'All Items', Icon: LayoutGrid },
+  { id: 'staples', label: 'Staples', Icon: Wheat },
+  { id: 'vegetables', label: 'Vegetables', Icon: Leaf },
+  { id: 'protein', label: 'Protein', Icon: Drumstick },
+  { id: 'dairy', label: 'Dairy', Icon: Milk },
+  { id: 'fuel', label: 'Fuel & Gas', Icon: Fuel },
+  { id: 'utilities', label: 'Utilities', Icon: Lightbulb },
+  { id: 'pharmacy', label: 'Pharmacy', Icon: Pill },
+  { id: 'household', label: 'Household', Icon: SprayCan },
 ];
 
 const MONTHS = ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan'];
@@ -90,7 +94,7 @@ export default function PricesPage() {
           <ShoppingCart size={18} />
           <span className="text-sm font-medium hidden sm:block">Basket</span>
           {basketItemCount > 0 && (
-            <span className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-[#e8b930] text-[#1a1a2e] text-xs font-bold rounded-full flex items-center justify-center">
+            <span className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-[#e8b930] text-black text-xs font-bold rounded-full flex items-center justify-center">
               {basketItemCount}
             </span>
           )}
@@ -103,7 +107,7 @@ export default function PricesPage() {
           <button key={cat.id} onClick={() => setCategory(cat.id)}
             className={cn('flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm whitespace-nowrap transition-all flex-shrink-0',
               category === cat.id ? 'bg-[#e8b930]/20 text-[#e8b930] border border-[#e8b930]/30' : 'bg-white/5 text-white/50 hover:bg-white/10')}>
-            <span>{cat.icon}</span>
+            <cat.Icon size={16} />
             <span className="hidden sm:block">{cat.label}</span>
           </button>
         ))}
@@ -147,7 +151,7 @@ export default function PricesPage() {
               </div>
               <div className="flex items-center justify-between mt-3">
                 {item.price_alert && (
-                  <span className="text-xs bg-[#e74c3c]/15 text-[#e74c3c] px-2 py-0.5 rounded-full">⚠️ Price alert</span>
+                  <span className="text-xs bg-[#e74c3c]/15 text-[#e74c3c] px-2 py-0.5 rounded-full flex items-center gap-1"><AlertTriangle size={12} /> Price alert</span>
                 )}
                 <button onClick={(e) => { e.stopPropagation(); addToBasket(item.id); }}
                   className="ml-auto p-1.5 rounded-lg bg-[#16a085]/15 text-[#16a085] hover:bg-[#16a085]/25">
@@ -158,7 +162,7 @@ export default function PricesPage() {
           ))}
         </div>
       ) : (
-        <EmptyState icon="🔍" title="No items found" description="Try a different category or search term" />
+        <EmptyState icon={<Search size={48} className="text-white/20" />} title="No items found" description="Try a different category or search term" />
       )}
 
       {/* Item detail modal */}
@@ -202,7 +206,7 @@ export default function PricesPage() {
                       <YAxis tick={{ fill: 'rgba(255,255,255,0.4)', fontSize: 10 }} axisLine={false} tickLine={false}
                         tickFormatter={(v) => `${v}`} />
                       <RTooltip formatter={(v: number) => [`₨ ${v}`, 'Price']} contentStyle={{
-                        background: 'rgba(15,52,96,0.95)', border: '1px solid rgba(232,185,48,0.2)',
+                        background: 'rgba(0,0,0,0.9)', border: '1px solid rgba(255,255,255,0.1)',
                         borderRadius: '12px', color: '#f8f5f0', fontSize: '12px'
                       }} />
                       <Line type="monotone" dataKey="price" stroke="#e8b930" strokeWidth={2} dot={false} />
@@ -220,7 +224,7 @@ export default function PricesPage() {
                       <XAxis dataKey="district" tick={{ fill: 'rgba(255,255,255,0.4)', fontSize: 9 }} axisLine={false} tickLine={false} />
                       <YAxis tick={{ fill: 'rgba(255,255,255,0.4)', fontSize: 9 }} axisLine={false} tickLine={false} />
                       <RTooltip formatter={(v: number) => [`₨ ${v}`, 'Price']} contentStyle={{
-                        background: 'rgba(15,52,96,0.95)', border: 'none', borderRadius: '8px', fontSize: '11px'
+                        background: 'rgba(0,0,0,0.9)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', fontSize: '11px'
                       }} />
                       <Bar dataKey="price" fill="#16a085" radius={[4, 4, 0, 0]} />
                     </BarChart>
@@ -230,7 +234,7 @@ export default function PricesPage() {
 
               <div className="flex gap-3">
                 <button onClick={() => { addToBasket(selectedItem.id); setSelectedItem(null); }}
-                  className="flex-1 py-3 rounded-xl font-bold text-[#1a1a2e] bg-gradient-to-r from-[#e8b930] to-[#c49a18]">
+                  className="flex-1 py-3 rounded-xl font-bold text-black bg-gradient-to-r from-[#e8b930] to-[#c49a18]">
                   Add to Basket
                 </button>
               </div>
@@ -254,7 +258,7 @@ export default function PricesPage() {
                 <button onClick={() => setShowBasket(false)} className="p-2 rounded-xl bg-white/5 text-white/50"><X size={18} /></button>
               </div>
               {basketItemCount === 0 ? (
-                <EmptyState icon="🛒" title="Basket is empty" description="Add items from the price list to calculate your monthly grocery bill" />
+                <EmptyState icon={<ShoppingCart size={48} className="text-white/20" />} title="Basket is empty" description="Add items from the price list to calculate your monthly grocery bill" />
               ) : (
                 <>
                   <div className="space-y-3 mb-5">

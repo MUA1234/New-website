@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { format, parseISO, isWithinInterval, startOfDay, endOfDay } from 'date-fns';
 import {
   Plus, Search, Filter, Trash2, Download, X, CheckSquare, Square,
-  RefreshCw, Calendar, ChevronDown
+  RefreshCw, Calendar, ChevronDown, Receipt
 } from 'lucide-react';
 import {
   PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RTooltip,
@@ -72,7 +72,7 @@ function AddExpenseModal({ onClose }: { onClose: () => void }) {
                     className={cn('flex flex-col items-center gap-1 p-2 rounded-xl text-xs transition-all border',
                       form.category === cat ? 'border-2 scale-105' : 'border-white/10')}
                     style={form.category === cat ? { borderColor: c.color, backgroundColor: c.bgColor } : {}}>
-                    <span>{c.icon}</span>
+                    <c.Icon size={16} style={{ color: c.color }} />
                     <span className="text-[10px] text-white/60 leading-none">{c.label.split(' ')[0]}</span>
                   </button>
                 );
@@ -87,17 +87,17 @@ function AddExpenseModal({ onClose }: { onClose: () => void }) {
               className="lkr-input w-full rounded-xl px-3 py-2.5 text-sm" />
             <select value={form.paymentMethod} onChange={(e) => setForm({ ...form, paymentMethod: e.target.value as typeof form.paymentMethod })}
               className="lkr-input w-full rounded-xl px-3 py-2.5 text-sm">
-              <option value="cash">💵 Cash</option>
-              <option value="card">💳 Card</option>
-              <option value="bank-transfer">🏦 Bank Transfer</option>
-              <option value="digital-wallet">📱 Digital Wallet</option>
+              <option value="cash">Cash</option>
+              <option value="card">Card</option>
+              <option value="bank-transfer">Bank Transfer</option>
+              <option value="digital-wallet">Digital Wallet</option>
             </select>
           </div>
           <textarea placeholder="Notes (optional)" value={form.notes}
             onChange={(e) => setForm({ ...form, notes: e.target.value })}
             className="lkr-input w-full rounded-xl px-4 py-3 text-sm resize-none" rows={2} />
           <button type="submit"
-            className="w-full py-3.5 rounded-xl font-bold text-[#1a1a2e] bg-gradient-to-r from-[#e8b930] to-[#c49a18]">
+            className="w-full py-3.5 rounded-xl font-bold text-black bg-gradient-to-r from-[#e8b930] to-[#c49a18]">
             Add {form.type === 'expense' ? 'Expense' : 'Income'}
           </button>
         </form>
@@ -179,7 +179,7 @@ export default function ExpensesPage() {
             <Download size={18} />
           </button>
           <button onClick={() => setShowAdd(true)}
-            className="flex items-center gap-2 bg-[#e8b930] text-[#1a1a2e] font-bold px-4 py-2.5 rounded-xl">
+            className="flex items-center gap-2 bg-[#e8b930] text-black font-bold px-4 py-2.5 rounded-xl">
             <Plus size={18} /> Add
           </button>
         </div>
@@ -296,7 +296,7 @@ export default function ExpensesPage() {
                       <CategoryIcon category={tx.type === 'income' ? 'income' : tx.category} size="sm" />
                       <div className="flex-1 min-w-0">
                         <p className="text-sm text-white/80 truncate">{tx.description || CATEGORIES[tx.category]?.label || 'Transaction'}</p>
-                        <p className="text-xs text-white/30">{tx.paymentMethod} {tx.isRecurring ? '· 🔄 Recurring' : ''}</p>
+                        <p className="text-xs text-white/30 flex items-center gap-1">{tx.paymentMethod} {tx.isRecurring ? <span className="inline-flex items-center gap-0.5">· <RefreshCw size={12} /> Recurring</span> : ''}</p>
                       </div>
                       <div className="text-right">
                         <LKRAmount amount={tx.amount} size="sm" color={tx.type === 'income' ? 'gold' : 'coral'} showSign={tx.type === 'income'} />
@@ -313,11 +313,11 @@ export default function ExpensesPage() {
           })}
         </div>
       ) : (
-        <EmptyState icon="🧾" title="No transactions found"
+        <EmptyState icon={<Receipt size={48} className="text-white/20" />} title="No transactions found"
           description={search || filterCategory !== 'all' ? 'Try adjusting your filters' : 'Add your first transaction to get started!'}
           action={
             <button onClick={() => setShowAdd(true)}
-              className="flex items-center gap-2 bg-[#e8b930] text-[#1a1a2e] font-bold px-6 py-3 rounded-xl">
+              className="flex items-center gap-2 bg-[#e8b930] text-black font-bold px-6 py-3 rounded-xl">
               <Plus size={18} /> Add Transaction
             </button>
           } />
@@ -326,7 +326,7 @@ export default function ExpensesPage() {
       {/* FAB */}
       <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
         onClick={() => setShowAdd(true)}
-        className="sm:hidden fixed bottom-20 right-4 z-30 w-14 h-14 rounded-full bg-gradient-to-br from-[#e8b930] to-[#c49a18] flex items-center justify-center shadow-[0_4px_20px_rgba(232,185,48,0.5)] text-[#1a1a2e]">
+        className="sm:hidden fixed bottom-20 right-4 z-30 w-14 h-14 rounded-full bg-gradient-to-br from-[#e8b930] to-[#c49a18] flex items-center justify-center shadow-[0_4px_20px_rgba(232,185,48,0.5)] text-black">
         <Plus size={26} strokeWidth={2.5} />
       </motion.button>
 

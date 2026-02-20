@@ -10,16 +10,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Ceylon Modern palette
+        // Ceylon Modern palette — black base
         sapphire: {
-          DEFAULT: '#1a1a2e',
-          light: '#16213e',
-          dark: '#0d0d1a',
+          DEFAULT: '#000000',
+          light: '#0a0a10',
+          dark: '#000000',
         },
         royal: {
-          DEFAULT: '#0f3460',
-          light: '#1a4a80',
-          dark: '#0a2444',
+          DEFAULT: '#0a0a14',
+          light: '#0f0f1a',
+          dark: '#050508',
         },
         gold: {
           DEFAULT: '#e8b930',
@@ -51,7 +51,7 @@ const config: Config = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         'gold-emerald': 'linear-gradient(135deg, #e8b930, #16a085)',
-        'sapphire-royal': 'linear-gradient(135deg, #1a1a2e, #0f3460)',
+        'sapphire-royal': 'linear-gradient(135deg, #000000, #0a0a14)',
       },
       animation: {
         'count-up': 'countUp 1s ease-out forwards',
@@ -87,7 +87,7 @@ const config: Config = {
         xs: '2px',
       },
       boxShadow: {
-        'glass': '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255,255,255,0.1)',
+        'glass': '0 8px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.05)',
         'gold': '0 0 20px rgba(232, 185, 48, 0.3)',
         'emerald': '0 0 20px rgba(22, 160, 133, 0.3)',
         'coral': '0 0 20px rgba(231, 76, 60, 0.3)',
