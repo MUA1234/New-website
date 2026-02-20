@@ -122,11 +122,14 @@ export default function BudgetPage() {
               <span className="text-sm font-semibold text-[#e74c3c]">Over Budget!</span>
             </div>
             <div className="flex flex-wrap gap-2">
-              {overBudgetCats.map((cat) => (
-                <span key={cat} className="text-xs bg-[#e74c3c]/15 text-[#e74c3c] px-2.5 py-1 rounded-full">
-                  <CATEGORIES[cat].Icon size={16} style={{ color: CATEGORIES[cat].color }} /> {CATEGORIES[cat].label}: {formatLKR(getSpent(cat) - getBudgetLimit(cat), true)} over
-                </span>
-              ))}
+              {overBudgetCats.map((cat) => {
+                const CatIcon = CATEGORIES[cat].Icon;
+                return (
+                  <span key={cat} className="text-xs bg-[#e74c3c]/15 text-[#e74c3c] px-2.5 py-1 rounded-full inline-flex items-center gap-1">
+                    <CatIcon size={12} /> {CATEGORIES[cat].label}: {formatLKR(getSpent(cat) - getBudgetLimit(cat), true)} over
+                  </span>
+                );
+              })}
             </div>
           </motion.div>
         )}

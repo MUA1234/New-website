@@ -27,7 +27,7 @@ function AddExpenseModal({ onClose }: { onClose: () => void }) {
     amount: '', category: 'groceries' as ExpenseCategory,
     date: format(new Date(), 'yyyy-MM-dd'), description: '',
     paymentMethod: 'cash' as const, notes: '', isRecurring: false,
-    recurringFrequency: 'monthly' as const, type: 'expense' as const,
+    recurringFrequency: 'monthly' as const, type: 'expense' as 'expense' | 'income',
   });
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

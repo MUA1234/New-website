@@ -58,7 +58,7 @@ function AddExpenseModal({ onClose }: { onClose: () => void }) {
     notes: '',
     isRecurring: false,
     recurringFrequency: 'monthly' as const,
-    type: 'expense' as const,
+    type: 'expense' as 'expense' | 'income',
   });
 
   const handleSubmit = (e: React.FormEvent) => {
