@@ -1,0 +1,194 @@
+[
+  {
+    "id": "understanding-epf-etf",
+    "title": "Understanding EPF & ETF: Your Free Retirement Fund",
+    "title_si": "EPF සහ ETF: ඔබේ නිදහස් විශ්‍රාම අරමුදල",
+    "category": "retirement",
+    "difficulty": "beginner",
+    "reading_time": 5,
+    "tags": ["EPF", "ETF", "retirement", "savings", "employment"],
+    "content": "The Employees' Provident Fund (EPF) and Employees' Trust Fund (ETF) are mandatory savings schemes for private sector employees in Sri Lanka. Your employer contributes 12% of your salary to EPF and 3% to ETF, while you contribute 8% to EPF. As of 2024, EPF earns around 9% annually — one of the best guaranteed returns in Sri Lanka. Never withdraw your EPF early unless in dire need, as it will significantly reduce your retirement corpus. At retirement, EPF members can receive a lump sum payment based on their accumulated contributions.",
+    "quiz": [
+      {
+        "question": "What percentage does an employee contribute to EPF?",
+        "options": ["5%", "8%", "10%", "12%"],
+        "correct": 1,
+        "explanation": "Employees contribute 8% of their basic salary to EPF, while employers contribute 12%."
+      },
+      {
+        "question": "What does ETF stand for?",
+        "options": ["Employee Tax Fund", "Employees' Trust Fund", "Employment Transfer Fund", "Earnings Tax Fund"],
+        "correct": 1,
+        "explanation": "ETF stands for Employees' Trust Fund. Employers contribute 3% of employee salary to ETF."
+      }
+    ]
+  },
+  {
+    "id": "50-30-20-rule",
+    "title": "The 50/30/20 Rule: Budget Like a Pro",
+    "title_si": "50/30/20 නීතිය: ප්‍රවීණයෙකු ලෙස අයවැය සකස් කරන්න",
+    "category": "budgeting",
+    "difficulty": "beginner",
+    "reading_time": 4,
+    "tags": ["budgeting", "50/30/20", "savings", "expenses"],
+    "content": "The 50/30/20 rule is one of the simplest budgeting frameworks. Allocate 50% of your after-tax income to needs (rent, groceries, utilities, loan repayments), 30% to wants (entertainment, dining out, hobbies), and 20% to savings and investments. In the Sri Lankan context, housing costs alone can consume 20-30% of income in cities like Colombo, so adjust the rule to fit your reality. The key principle is prioritizing savings before discretionary spending.",
+    "quiz": [
+      {
+        "question": "What percentage should go to savings in the 50/30/20 rule?",
+        "options": ["10%", "15%", "20%", "30%"],
+        "correct": 2,
+        "explanation": "In the 50/30/20 rule, 20% of your after-tax income should be directed to savings and investments."
+      },
+      {
+        "question": "Which category does rent fall under?",
+        "options": ["Wants (30%)", "Needs (50%)", "Savings (20%)", "None of the above"],
+        "correct": 1,
+        "explanation": "Rent is a necessity and falls under the 50% 'needs' category along with groceries, utilities, and loan repayments."
+      }
+    ]
+  },
+  {
+    "id": "managing-credit-card-debt",
+    "title": "Escaping the Credit Card Debt Trap",
+    "title_si": "ණය කාඩ් ණය උගුලෙන් ගැලවෙන්නේ කෙසේද",
+    "category": "debt",
+    "difficulty": "intermediate",
+    "reading_time": 6,
+    "tags": ["credit card", "debt", "interest rates", "repayment"],
+    "content": "Credit card interest rates in Sri Lanka can be 24-36% per annum — among the highest forms of debt available. If you only pay the minimum amount, you could be paying for years and accumulating massive interest. Always pay more than the minimum — ideally the full balance each month. If you have multiple credit card debts, use the avalanche method (pay highest interest first) to minimize total interest paid. Consider a balance transfer to a lower-rate card or a personal loan at a lower interest rate to consolidate your debt.",
+    "quiz": [
+      {
+        "question": "What is a typical credit card interest rate in Sri Lanka?",
+        "options": ["5-10%", "12-15%", "24-36%", "40-50%"],
+        "correct": 2,
+        "explanation": "Credit card interest rates in Sri Lanka typically range from 24% to 36% per annum, making it one of the most expensive forms of debt."
+      },
+      {
+        "question": "Which debt repayment method minimizes total interest paid?",
+        "options": ["Snowball method", "Avalanche method", "Minimum payment method", "Equal payment method"],
+        "correct": 1,
+        "explanation": "The avalanche method (paying highest interest rate debt first) mathematically minimizes the total interest you pay over time."
+      }
+    ]
+  },
+  {
+    "id": "emergency-fund-guide",
+    "title": "Building Your Emergency Fund: A Sri Lankan Guide",
+    "title_si": "හදිසි අරමුදලක් ගොඩනංවන්නේ කෙසේද",
+    "category": "savings",
+    "difficulty": "beginner",
+    "reading_time": 5,
+    "tags": ["emergency fund", "savings", "financial safety net"],
+    "content": "An emergency fund is 3-6 months of your essential expenses kept in a liquid, accessible account. In Sri Lanka, with economic uncertainties, an emergency fund is crucial. Keep it in a savings account at NSB, Bank of Ceylon, or People's Bank for easy access and reasonable interest (5-7% p.a.). Start small — even ₨ 5,000 per month. Your goal: enough to cover rent, food, utilities, and loan repayments for 3-6 months. Never invest your emergency fund in stocks or FDs with lock-in periods.",
+    "quiz": [
+      {
+        "question": "How many months of expenses should an emergency fund cover?",
+        "options": ["1 month", "2 months", "3-6 months", "12 months"],
+        "correct": 2,
+        "explanation": "Financial experts recommend keeping 3-6 months of essential expenses in your emergency fund to cover job loss, medical emergencies, or unexpected expenses."
+      },
+      {
+        "question": "Where should you NOT keep your emergency fund?",
+        "options": ["Savings account", "Fixed Deposit with long lock-in", "NSB account", "Current account"],
+        "correct": 1,
+        "explanation": "Emergency funds should be instantly accessible. Fixed Deposits with long lock-in periods are not suitable as you may not be able to withdraw when needed."
+      }
+    ]
+  },
+  {
+    "id": "sri-lanka-tax-guide",
+    "title": "PAYE Tax in Sri Lanka: What You Need to Know",
+    "title_si": "ශ්‍රී ලංකාවේ PAYE බදු: ඔබ දැනගත යුතු දේ",
+    "category": "tax",
+    "difficulty": "intermediate",
+    "reading_time": 7,
+    "tags": ["tax", "PAYE", "income tax", "salary"],
+    "content": "Sri Lanka's PAYE (Pay As You Earn) tax system applies to employment income. The tax-free threshold is ₨ 1,200,000 per year (₨ 100,000/month). Above that, tax slabs apply: 6% on next ₨500K, 12% on next ₨500K, 18% on next ₨500K, 24% on next ₨500K, 30% on next ₨500K, and 36% on the balance. You can claim reliefs for EPF contributions and qualifying investments. Government employees follow a slightly different structure. Make sure your employer is deducting the correct tax amount each month.",
+    "quiz": [
+      {
+        "question": "What is the monthly tax-free threshold for employment income?",
+        "options": ["₨ 50,000", "₨ 100,000", "₨ 150,000", "₨ 200,000"],
+        "correct": 1,
+        "explanation": "The annual tax-free threshold is ₨ 1,200,000, which equals ₨ 100,000 per month. Income below this is not subject to income tax."
+      },
+      {
+        "question": "What does PAYE stand for?",
+        "options": ["Pay All Your Earnings", "Pay As You Earn", "Personal Annual Yearly Earnings", "Payroll And Year End"],
+        "correct": 1,
+        "explanation": "PAYE stands for Pay As You Earn — a system where employers deduct income tax from employees' salaries before payment."
+      }
+    ]
+  },
+  {
+    "id": "fixed-deposits-guide",
+    "title": "Fixed Deposits in Sri Lanka: Maximizing Returns",
+    "title_si": "ශ්‍රී ලංකාවේ ස්ථාවර තැන්පතු",
+    "category": "investment",
+    "difficulty": "beginner",
+    "reading_time": 5,
+    "tags": ["fixed deposit", "FD", "investment", "savings"],
+    "content": "Fixed Deposits (FDs) are the most popular savings instrument in Sri Lanka. They offer guaranteed returns ranging from 9-13% per annum depending on the bank and tenure. State banks (Bank of Ceylon, People's Bank, NSB) offer slightly lower rates but are considered safer. Licensed Finance Companies (LFCs) offer higher rates but carry more risk. Always check if the LFC is licensed by the Central Bank of Sri Lanka. For amounts above ₨ 600,000, consider spreading across multiple institutions to manage risk. Interest earned on FDs is subject to a 5% withholding tax.",
+    "quiz": [
+      {
+        "question": "What tax applies to Fixed Deposit interest in Sri Lanka?",
+        "options": ["10% withholding tax", "5% withholding tax", "No tax", "15% income tax"],
+        "correct": 1,
+        "explanation": "Interest earned on Fixed Deposits is subject to a 5% withholding tax, which is deducted at source by the bank."
+      },
+      {
+        "question": "Which institution is safest for Fixed Deposits?",
+        "options": ["Unlicensed finance companies", "Licensed Finance Companies (LFCs)", "State banks", "All are equally safe"],
+        "correct": 2,
+        "explanation": "State banks like Bank of Ceylon, People's Bank, and NSB are considered the safest as they are government-owned and have implicit state backing."
+      }
+    ]
+  },
+  {
+    "id": "housing-loan-guide",
+    "title": "Getting a Housing Loan in Sri Lanka",
+    "title_si": "ශ්‍රී ලංකාවේ නිවාස ණය ලබා ගැනීම",
+    "category": "loans",
+    "difficulty": "intermediate",
+    "reading_time": 8,
+    "tags": ["housing loan", "mortgage", "property", "loan"],
+    "content": "Housing loans in Sri Lanka typically carry interest rates of 7-12% per annum. State banks and the National Housing Development Authority (NHDA) offer subsidized rates for first-time buyers. Your monthly EMI should ideally not exceed 30% of your monthly income. For a ₨ 5 million loan at 10% for 20 years, your EMI would be approximately ₨ 48,250. Banks typically finance up to 70-80% of the property value, requiring a 20-30% down payment. Always compare rates across multiple banks — HDFC, HNB, BOC, and Sampath Bank are popular choices for housing loans.",
+    "quiz": [
+      {
+        "question": "What percentage of monthly income should your EMI ideally not exceed?",
+        "options": ["20%", "30%", "40%", "50%"],
+        "correct": 1,
+        "explanation": "Financial advisors recommend that your total EMI payments should not exceed 30% of your monthly income to maintain a healthy financial position."
+      },
+      {
+        "question": "How much of the property value do banks typically finance?",
+        "options": ["50-60%", "70-80%", "90-100%", "100%"],
+        "correct": 1,
+        "explanation": "Most Sri Lankan banks finance 70-80% of the property value, requiring the buyer to have a 20-30% down payment ready."
+      }
+    ]
+  },
+  {
+    "id": "digital-payments-sri-lanka",
+    "title": "Digital Payments & Cashback: Making Your Money Work",
+    "title_si": "ඩිජිටල් ගෙවීම් සහ කෑෂ්බෑක්",
+    "category": "budgeting",
+    "difficulty": "beginner",
+    "reading_time": 4,
+    "tags": ["digital wallet", "cashback", "FriMi", "Genie", "LankaQR"],
+    "content": "Sri Lanka's digital payment ecosystem has grown rapidly. Apps like FriMi, Genie, eZ Cash, and mCash offer cashback, discounts, and convenience. LankaQR is the national QR payment standard. Debit cards linked to your bank account offer cashback on selected merchants. Credit cards can earn reward points that translate to savings — but only if you pay the full balance monthly. Many supermarkets (Keells, Arpico, Cargills) have loyalty programs. Using digital payments helps you track spending automatically and reduces impulse cash purchases.",
+    "quiz": [
+      {
+        "question": "What is Sri Lanka's national QR payment standard?",
+        "options": ["PayHere", "LankaQR", "FriMi", "Dialog Pay"],
+        "correct": 1,
+        "explanation": "LankaQR is the national QR code-based payment standard introduced by the Central Bank of Sri Lanka for instant payments."
+      },
+      {
+        "question": "When is it beneficial to use a credit card for daily expenses?",
+        "options": ["Always, to earn rewards", "Only when you pay the full balance monthly", "Never", "Only for large purchases"],
+        "correct": 1,
+        "explanation": "Credit cards are beneficial only when you pay the full balance each month to avoid 24-36% interest charges while still earning reward points."
+      }
+    ]
+  }
+]

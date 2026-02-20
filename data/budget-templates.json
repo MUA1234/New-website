@@ -1,0 +1,176 @@
+[
+  {
+    "id": "student-colombo",
+    "name": "Student in Colombo",
+    "description": "Budget template for a university student living alone in Colombo, typically in a boarding house or shared apartment near campus. Covers basic needs on a tight budget.",
+    "household_size": 1,
+    "district": "colombo",
+    "monthly_income": 45000,
+    "income_sources": ["part-time work", "family allowance"],
+    "budgets": {
+      "groceries": 15000,
+      "transport": 8000,
+      "utilities": 3000,
+      "rent": 15000,
+      "education": 5000,
+      "healthcare": 2000,
+      "clothing": 2000,
+      "entertainment": 2000,
+      "religious": 1000,
+      "loans": 0,
+      "savings": 5000,
+      "miscellaneous": 3000
+    },
+    "tips": [
+      "Cook at home to save on food costs",
+      "Use public buses instead of tuk-tuks for daily commute",
+      "Buy second-hand textbooks or share with classmates",
+      "Open a savings account and automate LKR 5,000 transfer on payday"
+    ]
+  },
+  {
+    "id": "family-kandy",
+    "name": "Family in Kandy",
+    "description": "Budget template for a family of four (2 adults, 2 school-age children) in Kandy. One primary earner with a government or private sector job, spouse may do part-time work.",
+    "household_size": 4,
+    "district": "kandy",
+    "monthly_income": 120000,
+    "income_sources": ["primary salary", "secondary income"],
+    "budgets": {
+      "groceries": 35000,
+      "transport": 12000,
+      "utilities": 6500,
+      "rent": 20000,
+      "education": 15000,
+      "healthcare": 5000,
+      "clothing": 5000,
+      "entertainment": 4000,
+      "religious": 3000,
+      "loans": 10000,
+      "savings": 12000,
+      "miscellaneous": 7000
+    },
+    "tips": [
+      "Buy groceries in bulk from Kandy market to save 15-20%",
+      "Consider a CTB monthly bus pass for school children",
+      "Set aside LKR 3,000/month for medical emergencies",
+      "Enroll children in public school to reduce education costs"
+    ]
+  },
+  {
+    "id": "single-professional-galle",
+    "name": "Young Professional in Galle",
+    "description": "Budget template for a single working professional in their late 20s to mid-30s in Galle, likely in tourism, finance, or IT sector. Moderate lifestyle with some savings goals.",
+    "household_size": 1,
+    "district": "galle",
+    "monthly_income": 85000,
+    "income_sources": ["salary"],
+    "budgets": {
+      "groceries": 18000,
+      "transport": 10000,
+      "utilities": 4500,
+      "rent": 18000,
+      "education": 3000,
+      "healthcare": 3000,
+      "clothing": 4000,
+      "entertainment": 5000,
+      "religious": 1500,
+      "loans": 8000,
+      "savings": 15000,
+      "miscellaneous": 5000
+    },
+    "tips": [
+      "Invest LKR 10,000/month in a fixed deposit for 6-12 months",
+      "Use a motorbike for commuting to save on transport",
+      "Take advantage of Galle Fort area weekend markets for fresh produce",
+      "Consider term life insurance now while premiums are lower"
+    ]
+  },
+  {
+    "id": "retired-matara",
+    "name": "Retired Couple in Matara",
+    "description": "Budget template for a retired couple in Matara living on pension income. Children are grown and independent. Focus on healthcare, comfortable living, and maintaining savings.",
+    "household_size": 2,
+    "district": "matara",
+    "monthly_income": 65000,
+    "income_sources": ["government pension", "EPF withdrawal interest", "rental income"],
+    "budgets": {
+      "groceries": 20000,
+      "transport": 6000,
+      "utilities": 5000,
+      "rent": 0,
+      "education": 0,
+      "healthcare": 12000,
+      "clothing": 3000,
+      "entertainment": 4000,
+      "religious": 4000,
+      "loans": 0,
+      "savings": 5000,
+      "miscellaneous": 6000
+    },
+    "tips": [
+      "Register at the nearest Sevana clinic for subsidized medication",
+      "Keep LKR 100,000 in a liquid savings account for medical emergencies",
+      "Consider a senior citizen fixed deposit - banks offer higher rates",
+      "Review insurance policy annually to ensure adequate health coverage"
+    ]
+  },
+  {
+    "id": "family-jaffna",
+    "name": "Family in Jaffna",
+    "description": "Budget template for a family of five in Jaffna (2 adults, 3 children including one in Advanced Level). Typical middle-income family with own home, focused on children's education.",
+    "household_size": 5,
+    "district": "jaffna",
+    "monthly_income": 100000,
+    "income_sources": ["salary", "small business"],
+    "budgets": {
+      "groceries": 32000,
+      "transport": 10000,
+      "utilities": 5500,
+      "rent": 0,
+      "education": 18000,
+      "healthcare": 5000,
+      "clothing": 5000,
+      "entertainment": 3000,
+      "religious": 4000,
+      "loans": 8000,
+      "savings": 8000,
+      "miscellaneous": 6000
+    },
+    "tips": [
+      "A/L tuition classes can be expensive - compare prices carefully",
+      "Jaffna market has excellent fresh vegetables - buy weekly",
+      "Consider a Sampath or NSB savings account for children's education fund",
+      "Apply for Mahapola or Bursary scholarships for university-bound children"
+    ]
+  },
+  {
+    "id": "worker-gampaha",
+    "name": "Factory Worker Family in Gampaha",
+    "description": "Budget template for a working-class family of four in Gampaha where both adults work in the free trade zone or local factories. Tight budget with focus on essentials and loan repayments.",
+    "household_size": 4,
+    "district": "gampaha",
+    "monthly_income": 80000,
+    "income_sources": ["factory salary x2"],
+    "budgets": {
+      "groceries": 28000,
+      "transport": 10000,
+      "utilities": 5000,
+      "rent": 12000,
+      "education": 8000,
+      "healthcare": 4000,
+      "clothing": 3500,
+      "entertainment": 2500,
+      "religious": 2000,
+      "loans": 12000,
+      "savings": 6000,
+      "miscellaneous": 5000
+    },
+    "tips": [
+      "Check if your factory has a cooperative society for low-interest loans",
+      "Keep a physical expense notebook to track daily cash spending",
+      "Enroll in the Employees' Trust Fund (ETF) - your employer must contribute",
+      "Avoid microfinance loans with very high interest rates"
+    ]
+  }
+]

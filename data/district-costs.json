@@ -1,0 +1,432 @@
+{
+  "updated": "2025-01-15",
+  "currency": "LKR",
+  "note": "Average monthly costs in Sri Lankan Rupees for 2024-2025",
+  "districts": [
+    {
+      "id": "colombo",
+      "name": "Colombo",
+      "name_si": "කොළඹ",
+      "region": "Western",
+      "monthly_costs": {
+        "rent_single": 35000,
+        "rent_family": 65000,
+        "groceries_single": 22000,
+        "groceries_family": 55000,
+        "transport": 12000,
+        "utilities": 6500,
+        "education_child": 8500,
+        "healthcare": 5000,
+        "entertainment": 7000
+      }
+    },
+    {
+      "id": "gampaha",
+      "name": "Gampaha",
+      "name_si": "ගම්පහ",
+      "region": "Western",
+      "monthly_costs": {
+        "rent_single": 22000,
+        "rent_family": 42000,
+        "groceries_single": 18000,
+        "groceries_family": 44000,
+        "transport": 9500,
+        "utilities": 5500,
+        "education_child": 6500,
+        "healthcare": 3800,
+        "entertainment": 4500
+      }
+    },
+    {
+      "id": "kalutara",
+      "name": "Kalutara",
+      "name_si": "කළුතර",
+      "region": "Western",
+      "monthly_costs": {
+        "rent_single": 18000,
+        "rent_family": 36000,
+        "groceries_single": 17000,
+        "groceries_family": 42000,
+        "transport": 8500,
+        "utilities": 5000,
+        "education_child": 5500,
+        "healthcare": 3500,
+        "entertainment": 3800
+      }
+    },
+    {
+      "id": "kandy",
+      "name": "Kandy",
+      "name_si": "මහනුවර",
+      "region": "Central",
+      "monthly_costs": {
+        "rent_single": 20000,
+        "rent_family": 38000,
+        "groceries_single": 18500,
+        "groceries_family": 45000,
+        "transport": 9000,
+        "utilities": 5200,
+        "education_child": 7000,
+        "healthcare": 4200,
+        "entertainment": 4800
+      }
+    },
+    {
+      "id": "matale",
+      "name": "Matale",
+      "name_si": "මාතලේ",
+      "region": "Central",
+      "monthly_costs": {
+        "rent_single": 12000,
+        "rent_family": 24000,
+        "groceries_single": 15000,
+        "groceries_family": 36000,
+        "transport": 7000,
+        "utilities": 4200,
+        "education_child": 4500,
+        "healthcare": 2800,
+        "entertainment": 2500
+      }
+    },
+    {
+      "id": "nuwara-eliya",
+      "name": "Nuwara Eliya",
+      "name_si": "නුවරඑළිය",
+      "region": "Central",
+      "monthly_costs": {
+        "rent_single": 13000,
+        "rent_family": 26000,
+        "groceries_single": 16000,
+        "groceries_family": 38000,
+        "transport": 7500,
+        "utilities": 5800,
+        "education_child": 4800,
+        "healthcare": 3000,
+        "entertainment": 2800
+      }
+    },
+    {
+      "id": "galle",
+      "name": "Galle",
+      "name_si": "ගාල්ල",
+      "region": "Southern",
+      "monthly_costs": {
+        "rent_single": 18500,
+        "rent_family": 36000,
+        "groceries_single": 17500,
+        "groceries_family": 43000,
+        "transport": 8500,
+        "utilities": 5000,
+        "education_child": 6000,
+        "healthcare": 3800,
+        "entertainment": 4200
+      }
+    },
+    {
+      "id": "matara",
+      "name": "Matara",
+      "name_si": "මාතර",
+      "region": "Southern",
+      "monthly_costs": {
+        "rent_single": 14000,
+        "rent_family": 28000,
+        "groceries_single": 16000,
+        "groceries_family": 39000,
+        "transport": 7500,
+        "utilities": 4500,
+        "education_child": 5000,
+        "healthcare": 3200,
+        "entertainment": 3000
+      }
+    },
+    {
+      "id": "hambantota",
+      "name": "Hambantota",
+      "name_si": "හම්බන්තොට",
+      "region": "Southern",
+      "monthly_costs": {
+        "rent_single": 11000,
+        "rent_family": 22000,
+        "groceries_single": 14500,
+        "groceries_family": 35000,
+        "transport": 7000,
+        "utilities": 4000,
+        "education_child": 4200,
+        "healthcare": 2800,
+        "entertainment": 2200
+      }
+    },
+    {
+      "id": "jaffna",
+      "name": "Jaffna",
+      "name_si": "යාපනය",
+      "region": "Northern",
+      "monthly_costs": {
+        "rent_single": 16000,
+        "rent_family": 30000,
+        "groceries_single": 17000,
+        "groceries_family": 41000,
+        "transport": 8000,
+        "utilities": 4800,
+        "education_child": 6500,
+        "healthcare": 3500,
+        "entertainment": 3500
+      }
+    },
+    {
+      "id": "kilinochchi",
+      "name": "Kilinochchi",
+      "name_si": "කිලිනොච්චි",
+      "region": "Northern",
+      "monthly_costs": {
+        "rent_single": 9000,
+        "rent_family": 18000,
+        "groceries_single": 13500,
+        "groceries_family": 32000,
+        "transport": 6500,
+        "utilities": 3800,
+        "education_child": 3800,
+        "healthcare": 2500,
+        "entertainment": 1800
+      }
+    },
+    {
+      "id": "mullaitivu",
+      "name": "Mullaitivu",
+      "name_si": "මුලතිව්",
+      "region": "Northern",
+      "monthly_costs": {
+        "rent_single": 8500,
+        "rent_family": 17000,
+        "groceries_single": 13000,
+        "groceries_family": 31000,
+        "transport": 7000,
+        "utilities": 3600,
+        "education_child": 3500,
+        "healthcare": 2400,
+        "entertainment": 1600
+      }
+    },
+    {
+      "id": "mannar",
+      "name": "Mannar",
+      "name_si": "මන්නාරම",
+      "region": "Northern",
+      "monthly_costs": {
+        "rent_single": 9500,
+        "rent_family": 19000,
+        "groceries_single": 14000,
+        "groceries_family": 33000,
+        "transport": 7000,
+        "utilities": 3800,
+        "education_child": 3800,
+        "healthcare": 2600,
+        "entertainment": 1900
+      }
+    },
+    {
+      "id": "vavuniya",
+      "name": "Vavuniya",
+      "name_si": "වවුනියාව",
+      "region": "Northern",
+      "monthly_costs": {
+        "rent_single": 11000,
+        "rent_family": 21000,
+        "groceries_single": 14500,
+        "groceries_family": 34000,
+        "transport": 7500,
+        "utilities": 4000,
+        "education_child": 4200,
+        "healthcare": 2800,
+        "entertainment": 2000
+      }
+    },
+    {
+      "id": "trincomalee",
+      "name": "Trincomalee",
+      "name_si": "ත්‍රිකුණාමලය",
+      "region": "Eastern",
+      "monthly_costs": {
+        "rent_single": 12000,
+        "rent_family": 24000,
+        "groceries_single": 15000,
+        "groceries_family": 36000,
+        "transport": 7500,
+        "utilities": 4200,
+        "education_child": 4500,
+        "healthcare": 3000,
+        "entertainment": 2500
+      }
+    },
+    {
+      "id": "batticaloa",
+      "name": "Batticaloa",
+      "name_si": "මඩකලපුව",
+      "region": "Eastern",
+      "monthly_costs": {
+        "rent_single": 11500,
+        "rent_family": 23000,
+        "groceries_single": 14500,
+        "groceries_family": 35000,
+        "transport": 7000,
+        "utilities": 4000,
+        "education_child": 4200,
+        "healthcare": 2800,
+        "entertainment": 2200
+      }
+    },
+    {
+      "id": "ampara",
+      "name": "Ampara",
+      "name_si": "අම්පාර",
+      "region": "Eastern",
+      "monthly_costs": {
+        "rent_single": 10500,
+        "rent_family": 21000,
+        "groceries_single": 14000,
+        "groceries_family": 34000,
+        "transport": 7000,
+        "utilities": 3900,
+        "education_child": 4000,
+        "healthcare": 2700,
+        "entertainment": 2000
+      }
+    },
+    {
+      "id": "puttalam",
+      "name": "Puttalam",
+      "name_si": "පුත්තලම",
+      "region": "North Western",
+      "monthly_costs": {
+        "rent_single": 11000,
+        "rent_family": 22000,
+        "groceries_single": 14500,
+        "groceries_family": 35000,
+        "transport": 7000,
+        "utilities": 4000,
+        "education_child": 4200,
+        "healthcare": 2800,
+        "entertainment": 2200
+      }
+    },
+    {
+      "id": "kurunegala",
+      "name": "Kurunegala",
+      "name_si": "කුරුණෑගල",
+      "region": "North Western",
+      "monthly_costs": {
+        "rent_single": 14000,
+        "rent_family": 27000,
+        "groceries_single": 15500,
+        "groceries_family": 37000,
+        "transport": 7500,
+        "utilities": 4500,
+        "education_child": 5000,
+        "healthcare": 3200,
+        "entertainment": 3000
+      }
+    },
+    {
+      "id": "anuradhapura",
+      "name": "Anuradhapura",
+      "name_si": "අනුරාධපුරය",
+      "region": "North Central",
+      "monthly_costs": {
+        "rent_single": 12000,
+        "rent_family": 24000,
+        "groceries_single": 15000,
+        "groceries_family": 36000,
+        "transport": 7500,
+        "utilities": 4200,
+        "education_child": 4800,
+        "healthcare": 3000,
+        "entertainment": 2600
+      }
+    },
+    {
+      "id": "polonnaruwa",
+      "name": "Polonnaruwa",
+      "name_si": "පොළොන්නරුව",
+      "region": "North Central",
+      "monthly_costs": {
+        "rent_single": 10500,
+        "rent_family": 21000,
+        "groceries_single": 14000,
+        "groceries_family": 34000,
+        "transport": 7000,
+        "utilities": 4000,
+        "education_child": 4200,
+        "healthcare": 2800,
+        "entertainment": 2200
+      }
+    },
+    {
+      "id": "badulla",
+      "name": "Badulla",
+      "name_si": "බදුල්ල",
+      "region": "Uva",
+      "monthly_costs": {
+        "rent_single": 11000,
+        "rent_family": 22000,
+        "groceries_single": 14500,
+        "groceries_family": 35000,
+        "transport": 7500,
+        "utilities": 4500,
+        "education_child": 4500,
+        "healthcare": 2900,
+        "entertainment": 2300
+      }
+    },
+    {
+      "id": "monaragala",
+      "name": "Monaragala",
+      "name_si": "මොණරාගල",
+      "region": "Uva",
+      "monthly_costs": {
+        "rent_single": 9000,
+        "rent_family": 18000,
+        "groceries_single": 13500,
+        "groceries_family": 32000,
+        "transport": 7000,
+        "utilities": 3800,
+        "education_child": 3800,
+        "healthcare": 2500,
+        "entertainment": 1800
+      }
+    },
+    {
+      "id": "ratnapura",
+      "name": "Ratnapura",
+      "name_si": "රත්නපුර",
+      "region": "Sabaragamuwa",
+      "monthly_costs": {
+        "rent_single": 12000,
+        "rent_family": 24000,
+        "groceries_single": 15000,
+        "groceries_family": 36000,
+        "transport": 7500,
+        "utilities": 4200,
+        "education_child": 4800,
+        "healthcare": 3000,
+        "entertainment": 2600
+      }
+    },
+    {
+      "id": "kegalle",
+      "name": "Kegalle",
+      "name_si": "කෑගල්ල",
+      "region": "Sabaragamuwa",
+      "monthly_costs": {
+        "rent_single": 11500,
+        "rent_family": 23000,
+        "groceries_single": 14500,
+        "groceries_family": 35000,
+        "transport": 7500,
+        "utilities": 4200,
+        "education_child": 4500,
+        "healthcare": 2900,
+        "entertainment": 2400
+      }
+    }
+  ]
+}
